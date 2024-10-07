@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Page with Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        .info p {
+            text-align: center;
+            margin: 0;
+            color: #666;
+        }
+        .contact {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .price-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .price-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .location iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+            margin-top: 20px;
+        }
+        .booking-form {
+            margin-top: 30px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input, select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>The xxx massage</h1>
+    </header>
+
+    <section class="info">
+        <h2>About Us</h2>
+        <p>Welcome to The xxx massage, a warm and inviting spot in the heart of the city. Enjoy in a relaxed setting.</p>
+    </section>
+
+    <section class="contact">
+        <h2>Contact Information</h2>
+        <p><strong>Phone:</strong> (027) 648-7890</p>
+        <p><strong>Email:</strong> contact@cozycafe.com</p>
+        <p><strong>Address:</strong> 33 Bunny Street, Pipitea, Wellington 6011</p>
+    </section>
+
+    <section class="location">
+        <h2>Our Location</h2>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.3544137071863!2d174.7735540876915!3d-41.27939046596321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d38ae2c1affa71f%3A0xd2cd592c63919069!2sVictoria%20University%20of%20Wellington%2C%20Pipitea%20Campus!5e0!3m2!1sen!2snz!4v1728278651995!5m2!1sen!2snz"
+            allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <section class="pricing">
+        <h2>Price List</h2>
+        <ul class="price-list">
+            <li><span>item6</span> <span>$4.50</span></li>
+            <li><span>item5</span> <span>$4.00</span></li>
+            <li><span>item4</span> <span>$3.00</span></li>
+            <li><span>item3</span> <span>$2.50</span></li>
+            <li><span>item2</span> <span>$3.50</span></li>
+            <li><span>item1</span> <span>$2.75</span></li>
+        </ul>
+    </section>
+
+    <section class="booking-form">
+        <h2>Book an Appointment</h2>
+        <form action="submit" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
+            <label for="appointment-date">Appointment Date:</label>
+            <input type="date" id="appointment-date" name="date" required>
+            <label for="appointment-time">Appointment Time:</label>
+            <select id="appointment-time" name="time" required>
+                <option value="" disabled selected>Select a time</option>
+                <option value="09:00">09:00 AM</option>
+                <option value="10:00">10:00 AM</option>
+                <option value="11:00">11:00 AM</option>
+                <option value="12:00">12:00 PM</option>
+                <option value="13:00">01:00 PM</option>
+                <option value="14:00">02:00 PM</option>
+                <option value="15:00">03:00 PM</option>
+                <option value="16:00">04:00 PM</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <script>
+        // 设置日期输入的最小值为今天
+        const dateInput = document.getElementById('appointment-date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+        // 检查 URL 中是否包含 success 参数，显示提交成功对话框
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+            alert('Your Booking submitted successfully!');
+        }
+    </script>
+</body>
+</html>
